@@ -5,22 +5,219 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>aura</title>
   <style>
-    html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@300;400&display=swap');
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(123, 91, 255, .16), transparent 25%),
+        radial-gradient(circle at 55% 45%, rgba(255, 173, 215, .09), transparent 30%),
+        #070709;
+      color: #f2eef5;
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-weight: 300;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 6vw;
+      z-index: 10;
+      font-size: 13px;
+      letter-spacing: .18em;
+    }
+
+    .brand {
+      letter-spacing: .38em;
+      text-transform: lowercase;
+    }
+
+    nav a {
+      color: rgba(242,238,245,.62);
+      text-decoration: none;
+      margin-left: 28px;
+      transition: color .25s ease;
+    }
+
+    nav a:hover { color: #fff; }
+
+    main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: #fff;
-      color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 48px;
+      text-align: center;
+      padding: 110px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: rgba(242,238,245,.55);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: clamp(88px, 18vw, 190px);
+      font-weight: 400;
+      line-height: .8;
+      letter-spacing: -.045em;
+      margin: 0;
+      background: linear-gradient(120deg, #fff 15%, #d9c9ff 48%, #f4d4e9 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .line {
+      width: 150px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+      margin: 34px 0 22px;
+    }
+
+    .tagline {
+      color: rgba(242,238,245,.58);
+      letter-spacing: .3em;
+      font-size: 12px;
+      text-transform: lowercase;
+    }
+
+    .orb {
+      width: min(52vw, 390px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      margin-top: 48px;
+      border: 1px solid rgba(255,255,255,.13);
+      background:
+        radial-gradient(circle at 36% 30%, rgba(255,238,224,.9), transparent 9%),
+        radial-gradient(circle at 67% 37%, rgba(196,127,255,.78), transparent 22%),
+        radial-gradient(circle at 36% 72%, rgba(255,185,158,.52), transparent 25%),
+        radial-gradient(circle at 45% 48%, rgba(91,89,255,.58), transparent 45%),
+        #11101b;
+      box-shadow:
+        0 0 90px rgba(116, 80, 255, .18),
+        inset 0 0 80px rgba(255,255,255,.06);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .scroll {
+      position: absolute;
+      bottom: 30px;
+      color: rgba(255,255,255,.35);
+      font-size: 18px;
+    }
+
+    section {
+      padding: 90px 7vw 110px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 70px;
+    }
+
+    .feature-number {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-size: 22px;
+      color: rgba(255,255,255,.35);
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: "DM Serif Display", Georgia, serif;
+      font-weight: 400;
+      font-size: 30px;
+      margin: 0 0 12px;
+    }
+
+    .features p {
+      color: rgba(242,238,245,.5);
+      line-height: 1.9;
+      font-size: 14px;
+      max-width: 250px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: rgba(255,255,255,.3);
+      font-size: 11px;
+      letter-spacing: .25em;
+    }
+
+    @media (max-width: 700px) {
+      nav { padding: 24px; }
+      nav div:last-child { display: none; }
+      .orb { width: min(72vw, 320px); }
+      .features { grid-template-columns: 1fr; gap: 48px; }
+      section { padding-top: 70px; }
     }
   </style>
 </head>
-<body>v</body>
+<body>
+  <nav>
+    <div class="brand">✦ aura</div>
+    <div>
+      <a href="#home">home</a>
+      <a href="#about">about</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <main id="home">
+    <div class="eyebrow">a quiet space</div>
+    <h1>aura</h1>
+    <div class="line"></div>
+    <div class="tagline">refined · minimal · timeless</div>
+    <div class="orb"></div>
+    <div class="scroll">⌄</div>
+  </main>
+
+  <section id="about">
+    <div class="features">
+      <div>
+        <div class="feature-number">01</div>
+        <h2>minimal</h2>
+        <p>Stripped back to what matters, with space to breathe.</p>
+      </div>
+      <div>
+        <div class="feature-number">02</div>
+        <h2>elegant</h2>
+        <p>Quiet details, soft light, and a feeling that lingers.</p>
+      </div>
+      <div>
+        <div class="feature-number">03</div>
+        <h2>timeless</h2>
+        <p>Designed to feel just as beautiful tomorrow as it does today.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">✦ &nbsp; aura</footer>
+</body>
 </html>
